@@ -6,14 +6,14 @@ df = pd.read_excel("orcamento.xlsx", skiprows=4)
 tamanho_plan = len(df.index)
 lista = []
 
-for i in range(0,tamanho_plan,1): # apagando linhas vazias (célula vazia)
+for i in range(0,tamanho_plan,1): # identificando ultima linha com item e apagando linhas vazias (célula vazia)
     linha = df.loc[i,'Item']
     cond = (pd.isnull(linha))
     if cond == True:
        linha = i
        df = df.drop(linha)
-
-for i in range(0,158,1): # formatando coluna da itemização
+       
+for i in range(0,tamanho_plan,1): # formatando coluna da itemização
 
     l1 = df.loc[i,'Item']
     l1 = str(l1)
@@ -71,9 +71,8 @@ for i in range(0,158,1): # formatando coluna da itemização
         ifin2=(istr+'.'+istr1+'.'+istr2+'.'+istr3)
         lista.append(ifin2)
         
-
-for i in range(0,158,1): # alterando itens da coluna inteira
+for i in range(0,150,1): # alterando itens da coluna inteira
     df.loc[i,'Item'] = lista[i]
 
-
-df.to_excel('teste.xlsx')
+print(df)
+df.to_excel('Planilha Ajustada.xlsx')
