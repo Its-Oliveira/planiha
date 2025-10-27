@@ -4,8 +4,8 @@ df = pd.read_excel("orcamento.xlsx", skiprows=4)
 tamanho_plan = len(df.index)
 
 
-def SyntaxBancos():
-    for i in range(0,tamanho_plan,1):
+def SyntaxBancos(df):
+    for i in range(0,150,1):
         bc = df.loc[i,'Banco']
         
         if bc == 'SINAPI-I' or bc == 'sinapi-i' or bc == 'sinapi-c' or bc == 'SINAPI-C' or bc =='sinapi' or bc=='SINAPI':
@@ -74,7 +74,9 @@ def SyntaxBancos():
         elif bc =='EMOP' or bc=='emop':
             df.loc[i,'Banco'] = 'EMOP'
 
+    return df
 
+SyntaxBancos(df)
 df.to_excel('Planilha Ajustada.xlsx')
 
    
