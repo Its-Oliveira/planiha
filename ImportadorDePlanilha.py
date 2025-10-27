@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import FormatBancos
+import cods
 
 df = pd.read_excel("orcamento.xlsx", skiprows=4)
 tamanho_plan = len(df.index)
@@ -100,6 +101,7 @@ for i in range(0,150,1): # alterando itens da coluna inteira
     df.loc[i,'Item'] = lista[i]
 
 FormatBancos.SyntaxBancos(df)
+
 
 df.to_excel('Planilha Ajustada.xlsx', index=False)
 print(df)
