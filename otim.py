@@ -2,21 +2,21 @@ import pandas as pd
 import numpy as np
 import FormatBancos
 
-df = pd.read_excel("orcamento.xlsx", skiprows=4)
+df = pd.read_excel("orcamento.xlsx", header=None)
 tamanho_plan = len(df.index)
+
+
+lerr = int(input("Linha primeiro item: "))
+l0 = lerr-1
+lf = int(input("Linha ultimo item: "))
 lista = []
 
+for i in range(l0,lf):
+    linha = df.loc[i,0]
 
-for i in range(0,tamanho_plan,1): # identificando ultima linha com item e apagando linhas vazias (célula vazia)
-    linha = df.loc[i,'Item']
-    cond = (pd.isnull(linha))
-    if cond == True:
-        linha = i
-        df = df.drop(linha)
+for i in range(l0,lf): # formatando coluna da itemização
 
-for i in range(0,150,1): # formatando coluna da itemização
-
-    l1 = df.loc[i,'Item']
+    l1 = df.loc[i,0]
     l1 = str(l1)
     i_sep = l1.split('.')
     array = np.array(i_sep)
@@ -95,12 +95,6 @@ for i in range(0,150,1): # formatando coluna da itemização
 
         ifin=(istr+'.'+istr1+'.'+istr2+'.'+istr3+'.'+istr4)
         lista.append(ifin)
-        
-for i in range(0,150,1): # alterando itens da coluna inteira
-    df.loc[i,'Item'] = lista[i]
 
-FormatBancos.SyntaxBancos(df)
-
-
-df.to_excel('Planilha Ajustada.xlsx', index=False)
-
+for i in range(l0,lf): # alterando itens da coluna inteira
+    df.loc[i,0] = lista[i]
