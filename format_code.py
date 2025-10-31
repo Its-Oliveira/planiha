@@ -1,23 +1,27 @@
 import pandas as pd
-import numpy as np
+import func
 
 df = pd.read_excel("orcamento.xlsx", header=None)
 tamanho_plan = len(df.index)
 
+l0 = int(input("Linha primeiro item: "))-1
+lf = int(input("Linha ultimo item: "))
 
-def codes(l0,lf):
+func.SyntaxBancos(df,l0,lf)
+
+def codes(df,l0,lf):
     for i in range(l0,lf):
         bc = df.loc[i,2]
         if bc == "SINAPI":
-            code = (df.loc[i,"Código"])
-            codel = code.strip()
-            df.loc[i,'Código'] = codel
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
             if len(codel) == 5 or len(codel) == 6:
-                print("formato correto")
-                print(codel)
+                df.loc[i,1] = codel
             else:
-                print("erro")
-                df.loc[i,"Código"] = "Erro"
-print(df)
+                df.loc[i,1] = "Erro, formato não reconhecido pela SINAPI"
+
+codes()
+
 
 df.to_excel('Planilha Ajustada.xlsx', index=False, header=False)

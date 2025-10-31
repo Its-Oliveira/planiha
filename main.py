@@ -25,5 +25,7 @@ for i in range(lf,tamanho_plan): #removendo linhas vazias finais
 
 func.SyntaxBancos(df,l0,lf) #formatando bancos
 
+func.codes(df,l0,lf)
+
 df_final = pd.concat([cb, df])
 df_final.to_excel('Planilha Ajustada.xlsx', index=False, header=False)
