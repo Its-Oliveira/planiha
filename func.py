@@ -96,7 +96,7 @@ def codes(df,l0,lf):
             code = str(df.loc[i,1])
             codel = (code.strip())
             df.loc[i,1] = codel
-            if len(codel) == 5 or len(codel) == 6:
+            if len(codel) == 5 or len(codel) == 6 or len(codel) == 8:
                 df.loc[i,1] = codel
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela SINAPI"
