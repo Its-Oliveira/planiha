@@ -27,17 +27,15 @@ def codes(df,l0,lf):
             df.loc[i,1] = codel
             if len(codel) == 6:
                 df.loc[i,1] = codel
-            elif len(codel) == 5:
-                df.loc[i,1] = "teste"
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela SBC"
-            print(codel)
+
 
         elif bc == "CPOS":
             code = str(df.loc[i,1])
             codel = (code.strip())
             df.loc[i,1] = codel
-            if len(codel) == 9:
+            if len(codel) == 9 or len(codel) == 15:
                 df.loc[i,1] = codel
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela CPOS"
@@ -46,21 +44,10 @@ def codes(df,l0,lf):
             code = str(df.loc[i,1])
             codel = (code.strip())
             df.loc[i,1] = codel
-            if len(codel) == 7:
+            if len(codel) == 7 or len(codel) == 5:
                 df.loc[i,1] = codel
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela SICRO"
-
-        elif bc == "SICRO":
-            code = str(df.loc[i,1])
-            codel = (code.strip())
-            df.loc[i,1] = codel
-            if len(codel) == 7:
-                df.loc[i,1] = codel
-            else:
-                df.loc[i,1] = "Erro, formato não reconhecido pela SICRO"
-
-
 
 codes(df,l0,lf)
         
