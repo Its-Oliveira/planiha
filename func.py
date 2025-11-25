@@ -67,13 +67,16 @@ def SyntaxBancos(df, l0, lf):
             df.loc[i,2] = 'EMBASA'
 
         elif bc =='CAERN' or bc=='caern':
-            df.loc[i,2] = 'CAEMA'
+            df.loc[i,2] = 'CAERN'
 
         elif bc =='COMPESA' or bc=='compesa':
             df.loc[i,2] = 'COMPESA'
 
         elif bc =='EMOP' or bc=='emop':
             df.loc[i,2] = 'EMOP'
+
+        elif bc =='SCO' or bc=='sco':
+            df.loc[i,2] = 'SCO'
 
     return df
 
