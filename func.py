@@ -91,7 +91,7 @@ def format_itemizacao(valor):
         # Caso alguma parte não seja número, retorna o valor original
         return valor
     
-    
+
 def codes(df,l0,lf):
     for i in range(l0,lf):
         bc = df.loc[i,2]
@@ -99,7 +99,7 @@ def codes(df,l0,lf):
             code = str(df.loc[i,1])
             codel = (code.strip())
             df.loc[i,1] = codel
-            if len(codel) == 5 or len(codel) == 6 or len(codel) == 8:
+            if len(codel) == 5 or len(codel) == 6 or len(codel) == 8 or len(codel) == 4 or len(codel) == 9:
                 df.loc[i,1] = codel
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela SINAPI"
@@ -107,11 +107,26 @@ def codes(df,l0,lf):
         elif bc == "SBC":
             code = str(df.loc[i,1])
             codel = (code.strip())
-            df.loc[i,1] = codel
             if len(codel) == 6:
                 df.loc[i,1] = codel
+            elif len(codel) == 1:
+                codel = '00000'+codel
+                df.loc[i,1] = codel
+            elif len(codel) == 2:
+                codel = '0000'+codel
+                df.loc[i,1] = codel
+            elif len(codel) == 3:
+                codel = '000'+codel
+                df.loc[i,1] = codel
+            elif len(codel) == 4:
+                codel = '00'+codel
+                df.loc[i,1] = codel
+            elif len(codel) == 5:
+                codel = '0'+codel
+                df.loc[i,1] = codel
             else:
-                df.loc[i,1] = "Erro, formato não reconhecido pela SBC"
+                df.loc[i,1] = "Erro, formato não reconhecido pela SBC"  
+
 
         elif bc == "CPOS":
             code = str(df.loc[i,1])
@@ -130,6 +145,179 @@ def codes(df,l0,lf):
                 df.loc[i,1] = codel
             else:
                 df.loc[i,1] = "Erro, formato não reconhecido pela SICRO"
+
+        elif bc == "SETOP":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 8 or len(codel) == 11:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SETOP"
+
+        elif bc == "IOPES":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 6:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela IOPES"
+
+        elif bc == "SIURB":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 7 or len(codel) == 5:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SIURB"
+
+        elif bc == "SIRUB INFRA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 7 or len(codel) == 5:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SIURB INFRA"
+
+        elif bc == "SUDECAP":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 8:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SUDECAP"
+
+        elif bc == "FDE":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 7 or len(codel) == 9:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela FDE"
+
+        elif bc == "EMOP":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 13 or len(codel) == 5:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela EMOP"
+
+        elif bc == "SCO":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 13 or len(codel) == 9:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SCO"
+                print(len(codel))
+
+        elif bc == "ORSE":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 4 or len(codel) == 5 or len(codel) == 15 or len(codel) == 3 or len(codel) == 2 :
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela ORSE"
+
+        elif bc == "SEINFRA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 5:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SEINFRA"
+
+        elif bc == "CAEMA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 6 or len(codel) == 10:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela CAEMA"
+
+        elif bc == "EMBASA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 8 or len(codel) == 10:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela EMBASA"
+
+        elif bc == "CAERN":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 3 or len(codel) == 4 or len(codel) == 5 or len(codel) == 6 or len(codel) == 7:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela CAERN"
+
+        elif bc == "COMPESA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 9 or len(codel) == 13 or len(codel) == 15:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela COMPESA"
+
+        elif bc == "AGESUL":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 4 or len(codel) == 10:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela AGESUL"
+
+        elif bc == "AGETOP CIVIL":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 6 or len(codel) == 4:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela AGETOP CIVIL"
+
+        elif bc == "AGETOP RODOVIARIA":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 5:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela AGETOP RODOVIARIA"
+
+        elif bc == "SEDOP":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 8 or len(codel) == 6:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela SEDOP"
+
+        elif bc == "DERPR":
+            code = str(df.loc[i,1])
+            codel = (code.strip())
+            df.loc[i,1] = codel
+            if len(codel) == 6:
+                df.loc[i,1] = codel
+            else:
+                df.loc[i,1] = "Erro, formato não reconhecido pela DERPR"
+
 
         
 
